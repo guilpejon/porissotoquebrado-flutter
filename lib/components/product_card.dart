@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget titleSection = Container(
-      padding: const EdgeInsets.all(32),
+    Widget productTitle = Container(
+      padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
       child: Row(
         children: [
           Expanded(
-            /*1*/
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                /*2*/
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
@@ -32,9 +31,8 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
-          /*3*/
           Icon(
-            Icons.star,
+            Icons.favorite,
             color: Colors.red[500],
           ),
           Text('41'),
@@ -42,8 +40,18 @@ class ProductCard extends StatelessWidget {
       ),
     );
 
-    Color color = Theme.of(context).primaryColor;
+    Widget productImage = Container(
+      child: FlatButton(
+        padding: EdgeInsets.all(0),
+        onPressed: _launchURL,
+        child: Image.network(
+          'https://porissotoquebrado.com.br/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d8d6e4511a66d02c8ee3e90ed9374d163808508/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9UY21WemFYcGxYM1J2WDJacGJHeGJCMmtDOUFGcEF2UUIiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a839b8f2c2a6fa0a5a6889d1a5f8843d5fb665fd/0-Feminino-halloween-carnaval-fantasia-engra-ado-flor-cosplay-sapatos-super-mario-cannibal-flor-piranha-deslizamento-em.jpg',
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
 
+    Color color = Theme.of(context).primaryColor;
     Widget buttonSection = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,7 +63,7 @@ class ProductCard extends StatelessWidget {
       ),
     );
 
-    Widget desriptionSection = Container(
+    Widget descriptionSection = Container(
       padding: const EdgeInsets.all(32),
       child: Text(
         'Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese '
@@ -72,15 +80,10 @@ class ProductCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(40, 40, 40, 0),
       child: Column(
         children: [
-          Image.network(
-            'https://porissotoquebrado.com.br/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d8d6e4511a66d02c8ee3e90ed9374d163808508/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9UY21WemFYcGxYM1J2WDJacGJHeGJCMmtDOUFGcEF2UUIiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a839b8f2c2a6fa0a5a6889d1a5f8843d5fb665fd/0-Feminino-halloween-carnaval-fantasia-engra-ado-flor-cosplay-sapatos-super-mario-cannibal-flor-piranha-deslizamento-em.jpg',
-            width: 600,
-            height: 240,
-            fit: BoxFit.cover,
-          ),
-          titleSection,
+          productImage,
+          productTitle,
           //buttonSection,
-          //desriptionSection
+          //descriptionSection
         ],
       ),
     );
@@ -105,5 +108,14 @@ class ProductCard extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _launchURL() async {
+    const url = 'https://flutter.dev';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
