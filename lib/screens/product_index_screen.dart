@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ProductIndexScreen extends StatefulWidget {
   @override
@@ -8,18 +7,25 @@ class ProductIndexScreen extends StatefulWidget {
 
 class _ProductIndexScreenState extends State<ProductIndexScreen> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SpinKitDoubleBounce(
-          color: Colors.white,
-          size: 100.0,
+      appBar: AppBar(
+        title: Center(
+          child: Text(
+            'Flutter Web App',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+            ),
+          ),
         ),
+        backgroundColor: Colors.white,
+        brightness: Brightness.light,
+        elevation: 1,
+      ),
+      backgroundColor: Colors.black,
+      body: SafeArea(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch),
       ),
     );
   }
