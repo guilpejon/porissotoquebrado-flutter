@@ -3,6 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProductCard extends StatelessWidget {
+  ProductCard({
+    @required this.imageUrl,
+    @required this.title,
+    @required this.store,
+    @required this.favoriteCount,
+  });
+
+  final String imageUrl;
+  final String title;
+  final String store;
+  final int favoriteCount;
+
   @override
   Widget build(BuildContext context) {
     Widget productTitle = Container(
@@ -16,14 +28,14 @@ class ProductCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Oeschinen Lake Campground',
+                    title,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 Text(
-                  'Kandersteg, Switzerland',
+                  store,
                   style: TextStyle(
                     color: Colors.grey[500],
                   ),
@@ -35,7 +47,7 @@ class ProductCard extends StatelessWidget {
             Icons.favorite,
             color: Colors.red[500],
           ),
-          Text('41'),
+          Text(favoriteCount.toString()),
         ],
       ),
     );
@@ -45,7 +57,7 @@ class ProductCard extends StatelessWidget {
         padding: EdgeInsets.all(0),
         onPressed: _launchURL,
         child: Image.network(
-          'https://porissotoquebrado.com.br/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWlU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d8d6e4511a66d02c8ee3e90ed9374d163808508/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9UY21WemFYcGxYM1J2WDJacGJHeGJCMmtDOUFGcEF2UUIiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a839b8f2c2a6fa0a5a6889d1a5f8843d5fb665fd/0-Feminino-halloween-carnaval-fantasia-engra-ado-flor-cosplay-sapatos-super-mario-cannibal-flor-piranha-deslizamento-em.jpg',
+          imageUrl,
           fit: BoxFit.cover,
         ),
       ),
@@ -77,7 +89,7 @@ class ProductCard extends StatelessWidget {
     );
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(40, 40, 40, 0),
+      padding: const EdgeInsets.fromLTRB(40, 30, 40, 20),
       child: Column(
         children: [
           productImage,
