@@ -8,11 +8,13 @@ class ProductCard extends StatelessWidget {
     @required this.title,
     @required this.store,
     @required this.favoriteCount,
+    @required this.affiliateLink,
   });
 
   final String imageUrl;
   final String title;
   final String store;
+  final String affiliateLink;
   final int favoriteCount;
 
   @override
@@ -55,7 +57,7 @@ class ProductCard extends StatelessWidget {
     Widget productImage = Container(
       child: FlatButton(
         padding: EdgeInsets.all(0),
-        onPressed: _launchURL,
+        onPressed: () => _launchURL(affiliateLink),
         child: Image.network(
           imageUrl,
           fit: BoxFit.cover,
@@ -122,8 +124,7 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  _launchURL() async {
-    const url = 'https://flutter.dev';
+  _launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
