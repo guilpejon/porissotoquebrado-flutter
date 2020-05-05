@@ -32,14 +32,19 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void fetchDataAndRedirect() async {
     var products = await getProductData();
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return ProductIndexScreen(products: products);
-        },
-      ),
-    );
+    if (products == null) {
+      // TODO: add error handling to end users
+      throw new Exception("Error retrieving products list!");
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return ProductIndexScreen(products: products);
+          },
+        ),
+      );
+    }
   }
 
   @override
