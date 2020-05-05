@@ -5,21 +5,21 @@ import 'package:url_launcher/url_launcher.dart';
 class ProductCard extends StatelessWidget {
   ProductCard({
     @required this.imageUrl,
-    @required this.title,
+    @required this.name,
     @required this.store,
     @required this.favoriteCount,
     @required this.affiliateLink,
   });
 
   final String imageUrl;
-  final String title;
+  final String name;
   final String store;
   final String affiliateLink;
   final int favoriteCount;
 
   @override
   Widget build(BuildContext context) {
-    Widget productTitle = Container(
+    Widget productName = Container(
       padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
       child: Row(
         children: [
@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    title,
+                    name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -95,7 +95,7 @@ class ProductCard extends StatelessWidget {
       child: Column(
         children: [
           productImage,
-          productTitle,
+          productName,
           //buttonSection,
           //descriptionSection
         ],
