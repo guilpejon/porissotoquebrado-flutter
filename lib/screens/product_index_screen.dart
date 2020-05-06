@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:porissotoquebrado/components/product_card.dart';
 
 class ProductIndexScreen extends StatefulWidget {
@@ -26,6 +25,18 @@ class _ProductIndexScreenState extends State<ProductIndexScreen> {
   }
 
   ListView _buildProductsLayout(List<dynamic> products) {
+//    var productCards = [
+//      products.map((item) {
+//        return ProductCard(
+//          imageUrl: item['thumbnail'],
+//          name: item['name'],
+//          store: item['store'],
+//          affiliateLink: item['affiliate_link'],
+//          favoriteCount: item['favorites_count'],
+//        );
+//      })
+//    ];
+
     var product = products[0];
 
     return ListView(
@@ -36,7 +47,7 @@ class _ProductIndexScreenState extends State<ProductIndexScreen> {
           store: product['store'],
           affiliateLink: product['affiliate_link'],
           favoriteCount: product['favorites_count'],
-        ),
+        )
       ],
     );
 
