@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:porissotoquebrado/screens/home_screen.dart';
 import 'package:porissotoquebrado/screens/loading_screen.dart';
 import 'components/product_card.dart';
 
@@ -15,7 +16,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'PorIssoToQuebrado',
-      home: LoadingScreen(),
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          primaryColor: Color.fromARGB(255, 250, 129, 96)),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
+//        home: LoadingScreen(),);
   }
 }
