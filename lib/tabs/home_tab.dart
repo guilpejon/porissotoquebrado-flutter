@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:porissotoquebrado/services/api.dart';
+import 'package:http/http.dart' as http;
 
 class HomeTab extends StatelessWidget {
+  Future _fetchProducts() {
+    return Api("https://api.porissotoquebrado.com.br/api/v1/produtos")
+        .getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget _buildBodyBackground() => Container(
@@ -31,6 +38,31 @@ class HomeTab extends StatelessWidget {
                 centerTitle: true,
               ),
             ),
+            FutureBuilder(
+              future: _fetchProducts(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return SliverToBoxAdapter(
+                    child: Container(
+                      height: 200.0,
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      ),
+                    ),
+                  );
+                } else {
+                  print(snapshot);
+                  return SliverToBoxAdapter(
+                    child: Container(
+                      height: 200.0,
+                      alignment: Alignment.center,
+                      child: Container(),
+                    ),
+                  );
+                }
+              },
+            )
           ],
         ),
       ],

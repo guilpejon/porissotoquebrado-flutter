@@ -4,9 +4,10 @@ import 'dart:convert';
 
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 import 'package:porissotoquebrado/helpers/config.dart';
+import 'package:porissotoquebrado/models/product.dart';
 
-class NetworkHelper {
-  NetworkHelper(this.url);
+class Api {
+  Api(this.url);
 
   final String url;
 
@@ -27,9 +28,12 @@ class NetworkHelper {
       headers: {HttpHeaders.authorizationHeader: "Bearer ${encodePayload()}"},
     );
     if (response.statusCode == 200) {
-      String data = response.body;
+      var decoded = jsonDecode(response.body);
 
-      return jsonDecode(data);
+      List<Product> products = decoded.map<Product>((map) {
+        return Product.fromJson(map);
+      }).toList();
+      return products;
     } else {
       print(response.statusCode);
     }

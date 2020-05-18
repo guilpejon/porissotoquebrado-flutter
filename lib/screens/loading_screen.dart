@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:porissotoquebrado/services/networking.dart';
+import 'package:porissotoquebrado/services/api.dart';
 import 'product_index_screen.dart';
 
 const apiKey = '';
@@ -21,10 +21,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     fetchDataAndRedirect();
   }
 
-  Future<dynamic> getProductData() async {
-    NetworkHelper networkHelper = NetworkHelper(apiUrl);
+  Future<dynamic> getProductData() {
+    Api api = Api(apiUrl);
 
-    var productsData = await networkHelper.getData();
+    var productsData = api.getData();
 
     return productsData;
   }
