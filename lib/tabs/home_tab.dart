@@ -28,8 +28,9 @@ class HomeTab extends StatelessWidget {
             SliverAppBar(
               floating: true,
               snap: true,
-              backgroundColor: Color.fromARGB(255, 250, 129, 96),
+              backgroundColor: Theme.of(context).primaryColor,
               elevation: 0.0,
+              iconTheme: new IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
                 title: const Text(
                   "PorIssoToQuebrado",
