@@ -18,7 +18,9 @@ class Api {
       issuedAt: DateTime.now(),
       maxAge: const Duration(hours: 12),
     );
-    const String secret = Properties.jwtSecret;
+    const String secret = Properties.environment == 'development'
+        ? Properties.developmentJwtSecret
+        : Properties.productionJwtSecret;
     return issueJwtHS256(claimSet, secret);
   }
 
@@ -27,6 +29,7 @@ class Api {
       url,
       headers: {HttpHeaders.authorizationHeader: "Bearer ${encodePayload()}"},
     );
+
     if (response.statusCode == 200) {
       var decoded = jsonDecode(response.body);
 

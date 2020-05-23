@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:porissotoquebrado/tiles/drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
+  final PageController pageController;
+
+  CustomDrawer(this.pageController);
+
   @override
   Widget build(BuildContext context) {
     Widget _buildDrawerBackground() => Container(
@@ -71,8 +75,8 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
               Divider(),
-              DrawerTile(Icons.home, "Início"),
-              DrawerTile(Icons.favorite, "Favoritos"),
+              DrawerTile(Icons.home, "Início", pageController, 0),
+              DrawerTile(Icons.favorite, "Favoritos", pageController, 1),
             ],
           )
         ],
