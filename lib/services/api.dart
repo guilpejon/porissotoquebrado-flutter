@@ -31,12 +31,7 @@ class Api {
     );
 
     if (response.statusCode == 200) {
-      var decoded = jsonDecode(response.body);
-
-      List<Product> products = decoded.map<Product>((map) {
-        return Product.fromJson(map);
-      }).toList();
-      return products;
+      return jsonDecode(response.body);
     } else {
       print(response.statusCode);
     }

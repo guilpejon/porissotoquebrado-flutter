@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:porissotoquebrado/helpers/config.dart';
+import 'package:porissotoquebrado/models/product.dart';
 import 'package:porissotoquebrado/services/api.dart';
 import 'package:http/http.dart' as http;
 import 'package:transparent_image/transparent_image.dart';
 
 class HomeTab extends StatelessWidget {
-  final String websiteUrl = (Properties.environment == 'development')
-      ? 'http://192.168.0.6:3000/api/v1/produtos'
-      : 'https://api.porissotoquebrado.com.br/api/v1/produtos';
+  Future _fetchProducts() async {
+    var apiResponse =
+        await Api("https://api.porissotoquebrado.com.br/api/v1/produtos")
+            .getData();
+    List<Product> products = apiResponse.map<Product>((map) {
+      return Product.fromJson(map);
+    }).toList();
+    return products;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,7 @@ class HomeTab extends StatelessWidget {
               ),
             ),
             FutureBuilder(
-              future: Api(websiteUrl).getData(),
+              future: _fetchProducts(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return SliverToBoxAdapter(

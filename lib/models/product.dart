@@ -8,15 +8,16 @@ class Product {
   final String affiliate_link;
   final String price;
 
-  Product(
-      {this.id,
-      this.name,
-      this.description,
-      this.favorites_count,
-      this.store,
-      this.thumbnail,
-      this.affiliate_link,
-      this.price});
+  Product({
+    this.id,
+    this.name,
+    this.description,
+    this.favorites_count,
+    this.store,
+    this.thumbnail,
+    this.affiliate_link,
+    this.price,
+  });
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
