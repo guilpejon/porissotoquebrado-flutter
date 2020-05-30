@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PorIssoToQuebrado',
       theme: ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: Color.fromARGB(255, 250, 129, 96)),

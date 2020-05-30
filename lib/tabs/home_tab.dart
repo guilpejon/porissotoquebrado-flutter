@@ -19,22 +19,9 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget _buildBodyBackground() => Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Theme.of(context).primaryColor,
-                Color.fromARGB(255, 253, 181, 168)
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        );
-
     return Stack(
       children: <Widget>[
-        _buildBodyBackground(),
+        Container(color: Colors.white70),
         CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
@@ -42,13 +29,16 @@ class HomeTab extends StatelessWidget {
               snap: true,
               backgroundColor: Theme.of(context).primaryColor,
               elevation: 0.0,
+              expandedHeight: 57.0,
               iconTheme: new IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
-                title: const Text(
-                  "PorIssoToQuebrado",
-                  style: TextStyle(color: Colors.white),
+                background: Container(
+                  padding: EdgeInsets.fromLTRB(0, 23, 0, 0),
+                  child: Image.asset(
+                    'images/logo.png',
+                    scale: 1.7,
+                  ),
                 ),
-                centerTitle: true,
               ),
             ),
             FutureBuilder(
@@ -70,7 +60,7 @@ class HomeTab extends StatelessWidget {
                     mainAxisSpacing: 1.0,
                     crossAxisSpacing: 1.0,
                     staggeredTiles: snapshot.data.map<StaggeredTile>((product) {
-                      return StaggeredTile.count(2, 2);
+                      return StaggeredTile.count(1, 1);
                     }).toList(),
                     children: snapshot.data.map<FadeInImage>((product) {
                       return FadeInImage.memoryNetwork(
