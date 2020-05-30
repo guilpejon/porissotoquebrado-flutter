@@ -7,6 +7,7 @@ class Product {
   final String thumbnail;
   final String affiliate_link;
   final String price;
+  final List images;
 
   Product({
     this.id,
@@ -17,6 +18,7 @@ class Product {
     this.thumbnail,
     this.affiliate_link,
     this.price,
+    this.images,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -29,6 +31,7 @@ class Product {
       thumbnail: json["thumbnail"],
       affiliate_link: json["affiliate_link"],
       price: json["price"],
+      images: json["images"],
     );
   }
 }
