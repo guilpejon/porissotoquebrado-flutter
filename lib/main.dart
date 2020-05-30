@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:porissotoquebrado/screens/home_screen.dart';
-import 'package:porissotoquebrado/services/api.dart';
+import 'package:porissotoquebrado/blocs/drawer_bloc.dart';
+import 'package:porissotoquebrado/screens/base/base_screen.dart';
+import 'package:provider/provider.dart';
 
-import 'helpers/config.dart';
-
-// Uncomment lines 7 and 10 to view the visual layout at runtime.
-// import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
-
-void main() {
-  // debugPaintSizeEnabled = true;
-
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Color.fromARGB(255, 250, 129, 96)),
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return MultiProvider(
+      providers: [
+        Provider<DrawerBloc>(
+          create: (_) => DrawerBloc(),
+          dispose: (context, value) => value.dispose(),
+        )
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          primaryColor: Color.fromARGB(255, 250, 129, 96),
+        ),
+        debugShowCheckedModeBanner: false,
+        home: BaseScreen(),
+      ),
     );
   }
 }
