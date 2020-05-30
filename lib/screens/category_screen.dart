@@ -36,8 +36,8 @@ class CategoryScreen extends StatelessWidget {
               return Center(
                 child: CircularProgressIndicator(),
               );
-            else
-              print(snapshot);
+            //else
+            //print(snapshot);
             return TabBarView(
               physics: NeverScrollableScrollPhysics(),
               children: [

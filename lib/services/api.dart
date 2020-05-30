@@ -32,8 +32,8 @@ class Api {
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
-    } else {
-      print(response.statusCode);
-    }
+    } //else {
+    //print(response.statusCode);
+    //}
   }
 }
