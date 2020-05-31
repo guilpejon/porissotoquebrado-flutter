@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:porissotoquebrado/blocs/home_bloc.dart';
 import 'package:porissotoquebrado/common/custom_drawer/custom_drawer.dart';
 import 'package:porissotoquebrado/screens/home/widgets/search_dialog.dart';
+import 'package:porissotoquebrado/screens/home/widgets/top_bar.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
         title: StreamBuilder<String>(
           stream: _homeBloc.outSearch,
@@ -82,6 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       drawer: CustomDrawer(),
+      body: Column(
+        children: <Widget>[
+          TopBar(),
+        ],
+      ),
     );
   }
 }
