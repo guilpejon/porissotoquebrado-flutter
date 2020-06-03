@@ -4,6 +4,7 @@ import 'package:porissotoquebrado/blocs/login/login_bloc.dart';
 import 'package:porissotoquebrado/screens/login/widgets/facebook_button.dart';
 import 'package:porissotoquebrado/screens/login/widgets/login_button.dart';
 import 'package:porissotoquebrado/screens/login/widgets/or_divider.dart';
+import 'package:porissotoquebrado/screens/signup/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -128,8 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-//                        Navigator.of(context).push(MaterialPageRoute(
-//                            builder: (context) => SignUpScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => SignUpScreen()));
                       },
                       child: Text(
                         'Cadastre-se',
