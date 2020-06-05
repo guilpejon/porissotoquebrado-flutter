@@ -102,7 +102,7 @@ class _SignupScreenState extends State<SignUpScreen> {
                 ),
                 const FieldTitle(
                   title: 'Senha',
-                  subtitle: 'User letras, números e caracteres especiais',
+                  subtitle: 'Usar letras, números e caracteres especiais',
                 ),
                 PasswordField(
                   onSaved: _signUpBloc.setPassword,
