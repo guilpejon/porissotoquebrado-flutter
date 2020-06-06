@@ -35,6 +35,14 @@ class IconSection extends StatelessWidget {
               },
               highlighted: snapshot.data == 1,
             ),
+            IconTile(
+              label: 'Minha Conta',
+              iconData: Icons.perm_identity,
+              onTap: () {
+                _setPage(2);
+              },
+              highlighted: snapshot.data == 2,
+            ),
           ],
         );
       },

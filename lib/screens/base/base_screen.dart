@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:porissotoquebrado/blocs/drawer_bloc.dart';
+import 'package:porissotoquebrado/screens/account/account_screen.dart';
 import 'package:porissotoquebrado/screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -45,9 +46,8 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           HomeScreen(),
-          Container(color: Colors.red),
           Container(color: Colors.green),
-          Container(color: Colors.yellow),
+          AccountScreen(),
         ],
       ),
     );
